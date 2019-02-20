@@ -1,0 +1,63 @@
+body{
+	font-family: arial;
+	text-align: center;
+}
+
+#content{
+
+	margin: 20px;
+	font-size:20px;
+}
+
+#package-1{
+	font-size: 0.9em;
+	width: 568px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+#package-2{
+	font-size: 0.9em;
+	/*border: 1px solid black;*/
+	width: 568px;
+	margin: 0 auto;
+}
+
+#footer{
+	height: 100px;
+	padding: 30px;
+}
+
+.last-h1{
+}
+
+.square{
+	margin: 20px;
+	margin-top: 0px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	float: left;
+	border-radius:2px;
+}
+
+
+.congratulation{
+	color: #000;
+}
+
+.first{
+}
+
+.clear-both{
+	clear: both;
+}
+
+.black{
+	background-color: black;
+}
+
+.white{
+	background-color: white;
+}
+

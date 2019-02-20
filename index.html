@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="jquery.js" type="text/javascript"></script>
+	<!-- <script src="skrypt.js" type="text/javascript"></script> -->
+	
+	<title>Gra w kwadraty</title>
+</head>
+
+<body>
+	<div id="content">
+		<h1>Gra w kwadraty</h1>
+		<p>Klikaj w poniższy rząd kwadratów aby zaciemnić wszystkie elementy</p>
+		<div id="package-1">
+				<h2>Wzór</h2>
+				
+				<div class="square first" id="num1"></div>
+				<div class="square first black" id="num2"></div>
+				<div class="square first" id="num3"></div>
+				<div class="square first black" id="num4"></div>
+				<div class="clear-both"></div>
+		</div>
+		
+		<div id="package-2">
+				<h2>Efekt</h2>
+
+				<div class="square second" id="num5"></div>
+				<div class="square second" id="num6"></div>
+				<div class="square second" id="num7"></div>
+				<div class="square second" id="num8"></div>
+				<div class="clear-both"></div>
+		</div>
+		
+		<div id="footer">
+			<h1 class="last-h1">Gratulacje! Udało Ci się!</h1>
+		</div>
+		
+	</div>
+</body>
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+	
+		const last_h1=document.querySelector('.last-h1');						//chwytanie komunikatu
+		last_h1.style.setProperty("visibility","hidden");								//domyślne ukrycie komunikatu
+		
+//------------ LOSOWANIE ZMIENNEJ ---------------------------------------
+	/*	let random;																					
+		for(let i=0;i<100;i++){
+		random=Math.floor(Math.random()*2);
+		console.log(random);}*/
+
+//------------ GÓRNE KWADRATY --------------------------------------------
+		
+		const first=document.querySelectorAll(".first");							//stworzenie górnej kolejki
+		var topTab=[];																			//topTab przechowuje w indeksach info o kolorach górnej kolejki
+		
+		for(let i=0;i<first.length;i++){													//kodowanie kolorów w górnych kwadratach do tabeli topTab
+			if(first[i].classList.contains('black'))
+				topTab[i]=1;																		//jeśli ma klasę 'black' (jest czarny) - [i]= 1, kolor biały 0;
+			else
+				topTab[i]=0;
+			}
+			
+		console.log('Górna kombinacja:', topTab);
+		
+		//zamiana dolnych kwadratów
+		
+		var second=document.querySelectorAll(".second");						//stworzenie dolnej kolejki
+		var bottomTab=[0,0,0,0];
+		
+//------------- OBSŁUGA KLIKNIĘCIA W DOLNY KWADRAT ----------------------------
+		
+		for(let j=0;j<second.length;j++){
+			second[j].addEventListener("click", function(){
+				if(bottomTab[j]==1)															//zapisywanie stanu kliknięć do dolnej tablicy bottomTab
+					bottomTab[j]=0;
+				else
+					bottomTab[j]=1;
+				
+				console.log(bottomTab);														//DLA KONSOLI --------------------------
+				
+				for(let i=0;i<bottomTab.length;i++){								//kolorowanie kwadratu na podstawie stanu tablicy bottom Tab
+					if(bottomTab[i]==1)
+						second[i].classList.add('black');
+					else
+						second[i].classList.remove('black');
+				}
+				
+				let isTableEqual=true;															//porównywanie stanów obu tablic i ustawienie flagi
+				for(i=0;i<bottomTab.length;i++){
+					if(topTab[i]==bottomTab[i])
+						continue;
+					else
+						isTableEqual=false;
+				}
+				
+				console.log('isTableEqual: ',isTableEqual);							//DLA KONSOLI --------------------------
+				
+				if(isTableEqual){
+					console.log('Wzory są identyczne!');									//DLA KONSOLI --------------------------
+					last_h1.style.setProperty("visibility","visible");
+				}
+				else{
+					last_h1.style.setProperty("visibility","hidden");
+					console.log('NIE są!');														//DLA KONSOLI --------------------------
+				}
+				
+			});
+			
+			}
+
+		});
+</script>
+
+
+</html>
