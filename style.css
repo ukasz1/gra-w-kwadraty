@@ -9,14 +9,14 @@ body{
 	font-size:20px;
 }
 
-#package-1{
+.package-1{
 	font-size: 0.9em;
 	width: 568px;
 	margin: 0 auto;
 	margin-bottom: 20px;
 }
 
-#package-2{
+.package-2{
 	font-size: 0.9em;
 	/*border: 1px solid black;*/
 	width: 568px;
@@ -40,7 +40,6 @@ body{
 	float: left;
 	border-radius:2px;
 }
-
 
 .congratulation{
 	color: #000;
